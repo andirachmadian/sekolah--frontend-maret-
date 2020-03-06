@@ -18,7 +18,7 @@ const randy = new Orang('Randy', 22);
 const yusuf = new Orang('Yusuf', 22);
 const haris = new Orang('Haris', 25);
 
-let sf = [andi, yusuf, randy, yusuf, haris];
+let sf = [andi, heru, randy, yusuf, haris];
 console.log(sf)
 
 // let filterUmur = sf.filter(function(person){
@@ -27,9 +27,10 @@ console.log(sf)
 // console.log(filterUmur)
 
 let filterNama = sf.filter((person)=>{
-    return person.nama 
+    return person.nama[1,4] === "h"
 })
 
+console.log(filterNama)
 
 // andi.nama = 'andi';
 // andi.umur = '28';
