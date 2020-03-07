@@ -21,16 +21,19 @@ const haris = new Orang('Haris', 25);
 let sf = [andi, heru, randy, yusuf, haris];
 console.log(sf)
 
-// let filterUmur = sf.filter(function(person){
-//     return person.umur < 27;
-// })
-// console.log(filterUmur)
-
-let filterNama = sf.filter((person)=>{
-    return person.nama[1,4] === "h"
+// filter umur < 27
+let filterUmur = sf.filter(function(person){
+    return person.umur < 27;
 })
+console.log(filterUmur)
+// filter nama
+function filterNama(filter){
+    return sf.filter((person)=>{
+        return person.nama.toLowerCase().includes(filter.toLowerCase())
+    })
+}
 
-console.log(filterNama)
+console.log(filterNama("H")) 
 
 // andi.nama = 'andi';
 // andi.umur = '28';
