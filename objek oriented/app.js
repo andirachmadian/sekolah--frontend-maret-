@@ -33,7 +33,10 @@ function filterNama(){
         return person.nama.toLowerCase().includes(cariNama.toLowerCase())
     })
     filterData.forEach(function(value){
-        document.getElementById('')
+        document.getElementById('con-card').innerHTML += `
+        <h2>${value.nama}</h2>
+        </br>
+        <h2>${value.umur}</h2>`
     })
 }
 
