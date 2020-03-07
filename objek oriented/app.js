@@ -27,13 +27,19 @@ let filterUmur = sf.filter(function(person){
 })
 console.log(filterUmur)
 // filter nama
-function filterNama(filter){
-    return sf.filter((person)=>{
-        return person.nama.toLowerCase().includes(filter.toLowerCase())
+function filterNama(){
+    let cariNama = document.getElementById('input-src').value
+    let filterData = sf.filter((person)=>{
+        return person.nama.toLowerCase().includes(cariNama.toLowerCase())
+    })
+    filterData.forEach(function(value){
+        document.getElementById('')
     })
 }
 
-console.log(filterNama("H")) 
+
+
+
 
 // andi.nama = 'andi';
 // andi.umur = '28';
