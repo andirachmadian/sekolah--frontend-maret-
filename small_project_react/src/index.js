@@ -4,10 +4,11 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import App from './App';
 import * as serviceWorker from './serviceWorker';
-import Layout from './Layout'
+// import Layout from './Layout'
+import Home from './Home'
 
 // ReactDOM.render(<App />, document.getElementById('root'));
-ReactDOM.render(<Layout />, document.getElementById('root'));
+ReactDOM.render(<Home />, document.getElementById('root'));
 
 
 serviceWorker.unregister();
