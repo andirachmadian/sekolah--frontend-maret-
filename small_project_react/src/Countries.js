@@ -2,20 +2,23 @@ import React from 'react'
 
 const countries = ['Indonesia', 'Malaysia', 'Myanmar', 'Singapore', 'Thailand', 'Kamboja'];
 
-function Countries () {
+function Countries() {
 
     const onSelectChange = (event) => {
         console.log(event.target.value)
     }
 
-    return (
-        <select onChange={onSelectChange}>
-            {
-                countries.map(c => {
-                    return <option>{c}</option>
-                })
-            }
-        </select>
+    return ( <
+        select onChange = {
+            onSelectChange
+        } > {
+            countries.map(c => {
+                return <option > {
+                    c
+                } < /option>
+            })
+        } <
+        /select>
     )
 }
 
