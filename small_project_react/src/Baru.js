@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function Baru() {
+export default function Baru(props) {
+  const [state, setState] = useState({
+    hobi: 'sepak bola',
+    umur: '27'
+  });
+
+  function handleNameChange(e) {
+    setState(e.target.value);
+  }
+
   return (
-    <div>
-      <div>Baru</div>
-    </div>
+    <>
+      <div>{props.nama}</div>
+      <div>{props.umur}</div>
+      <div>{props.lokasi}</div>
+      <div>==============</div>
+      {/* <div>{nama}</div>
+      <input value={nama} onChange={handleNameChange}></input> */}
+    </>
   );
 }
-
-function Lama() {
-  return (
-    <div>
-      <div>lama</div>
-    </div>
-  );
-}
-
-export { Baru, Lama };
