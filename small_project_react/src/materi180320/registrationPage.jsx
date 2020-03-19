@@ -22,15 +22,40 @@ export default function RegistrationPage() {
 
   const [name, setName] = useState('');
   const onChangeName = (event) => {
-    console.log(event.target.value);
     setName(event.target.value);
   };
 
-  // const [address, setAddress] = useState('');
-  // const onChangeAddress = (event) => {
-  //   console.log(event.target.value);
-  //   setAddress(event.target.value);
-  // };
+  const [address, setAddress] = useState('');
+  const onChangeAddress = (event) => {
+    setAddress(event.target.value);
+  };
+
+  const [idKTP, setKTP] = useState('');
+  const onChangeKTP = (event) => {
+    setKTP(event.target.value);
+  };
+
+  const [expiry, setExpiry] = useState('');
+  const onChangeExpiry = (event) => {
+    setExpiry(event.target.value);
+  };
+
+  const [civilian, setCivilian] = useState([]);
+  const onSubmitCivilian = () => {
+    if (name.length === 0) {
+      return alert('Nama Wajib di isi!!!');
+    }
+
+    const newCivilian = {
+      nama: name,
+      address: address,
+      ktp: idKTP,
+      expired: expiry,
+      lifetime: lifetime
+    };
+    console.log(newCivilian);
+    setCivilian((civilian) => [...civilian, newCivilian]);
+  };
 
   return (
     <div className='container'>
@@ -46,29 +71,30 @@ export default function RegistrationPage() {
             </div>
             <div className='form-group'>
               <label className='control-label'>Alamat Lengkap</label>
-              {/* <textarea type='text' className='form-control' placeholder='Alamat' value={address} onChange={(e) => onChangeAddress()} /> */}
+              <textarea type='text' className='form-control' placeholder='Alamat' value={address} onChange={(e) => onChangeAddress(e)} />
             </div>
             <div className='form-group'>
               <label className='control-label'>No KTP</label>
-              <input className='form-control' type='text' placeholder='No. KTP' />
+              <input className='form-control' type='text' placeholder='No. KTP' value={idKTP} onChange={(e) => onChangeKTP(e)} />
             </div>
             <div className='form-group'>
               <label className='control-label'>Masa Berlaku KTP</label>
               {/* <input className='form-control' type='date' placeholder='Masa berlaku KTP' /> */}
-              {lifetime === true ? <br /> : <input className='form-control' type='date' placeholder='Masa Berlaku KTP' />}
+              {lifetime === true ? <br /> : <input className='form-control' type='date' placeholder='Masa Berlaku KTP' value={expiry} onChange={(e) => onChangeExpiry(e)} />}
               <input type='checkbox' checked={lifetime} onClick={() => toggleLifeTime()} /> Berlaku seumur hidup
             </div>
             ​
             <div className='form-group'>
-              <button className='btn btn-primary' onClick={() => incremental()}>
+              <button className='btn btn-primary' onClick={() => onSubmitCivilian()}>
                 Daftar
               </button>
             </div>
+            {JSON.stringify(civilian)}
           </div>
           ​
           <br />
           <br />
-          <RegistrationList angka={angka} />
+          <RegistrationList civilian={civilian} />
         </div>
       </div>
     </div>
