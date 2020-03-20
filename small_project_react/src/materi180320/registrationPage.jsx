@@ -53,8 +53,8 @@ export default function RegistrationPage() {
       expired: expiry,
       lifetime: lifetime
     };
-    console.log(newCivilian);
-    setCivilian((civilian) => [...civilian, newCivilian]);
+    // console.log(newCivilian);
+    setCivilian([...civilian, newCivilian]);
   };
 
   return (
@@ -89,7 +89,6 @@ export default function RegistrationPage() {
                 Daftar
               </button>
             </div>
-            {JSON.stringify(civilian)}
           </div>
           ​
           <br />
