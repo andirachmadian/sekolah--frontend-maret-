@@ -31,6 +31,13 @@ export default function RegistrationPage() {
     }
     let newRegistration = Object.assign({}, registration);
     setCivilian((civilian) => [...civilian, newRegistration]);
+    setRegistration({
+      name: '',
+      address: '',
+      ktp: '',
+      expiry: '',
+      lifetime: false
+    });
   };
   return (
     <div className='container'>
