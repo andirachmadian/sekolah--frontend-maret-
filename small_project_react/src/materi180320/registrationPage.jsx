@@ -1,62 +1,37 @@
 import React, { useState } from 'react';
 import RegistrationList from './registrationList';
-
-// const contohData = {
-//   nama: '',
-//   addres: '',
-//   ktp: '',
-//   expired: '',
-//   lifetime: false
-// };
-
+const contohData = {
+  name: '',
+  address: '',
+  ktp: '',
+  expiry: '',
+  lifetime: false
+};
 export default function RegistrationPage() {
-  const [angka, setAngka] = useState(0);
-  const incremental = () => {
-    setAngka(angka + 1);
-  };
-
-  const [lifetime, setLifetime] = useState(false);
-  const toggleLifeTime = () => {
-    setLifetime(!lifetime);
-  };
-
-  const [name, setName] = useState('');
-  const onChangeName = (event) => {
-    setName(event.target.value);
-  };
-
-  const [address, setAddress] = useState('');
-  const onChangeAddress = (event) => {
-    setAddress(event.target.value);
-  };
-
-  const [idKTP, setKTP] = useState('');
-  const onChangeKTP = (event) => {
-    setKTP(event.target.value);
-  };
-
-  const [expiry, setExpiry] = useState('');
-  const onChangeExpiry = (event) => {
-    setExpiry(event.target.value);
-  };
-
   const [civilian, setCivilian] = useState([]);
-  const onSubmitCivilian = () => {
-    if (name.length === 0) {
-      return alert('Nama Wajib di isi!!!');
+  const [registration, setRegistration] = useState({
+    name: '',
+    address: '',
+    ktp: '',
+    expiry: '',
+    lifetime: false
+  });
+  const onChangeData = (e, stateName) => {
+    if (stateName === 'lifetime') {
+      registration['expiry'] = '';
+      registration[stateName] = !registration[stateName];
+    } else {
+      registration[stateName] = e.target.value;
     }
-
-    const newCivilian = {
-      nama: name,
-      address: address,
-      ktp: idKTP,
-      expired: expiry,
-      lifetime: lifetime
-    };
-    console.log(newCivilian);
-    setCivilian((civilian) => [...civilian, newCivilian]);
+    setRegistration(Object.assign({}, registration));
   };
-
+  const onSubmitCivilian = () => {
+    if (registration.name.length === 0) {
+      return alert('nama wajib di isi');
+    }
+    let newRegistration = Object.assign({}, registration);
+    setCivilian((civilian) => [...civilian, newRegistration]);
+  };
   return (
     <div className='container'>
       <div className='row'>
@@ -67,31 +42,28 @@ export default function RegistrationPage() {
           <div className='form'>
             <div className='form-group'>
               <label className='control-label'>Nama Lengkap</label>
-              <input className='form-control' type='text' placeholder='Nama' value={name} onChange={(e) => onChangeName(e)} />
+              <input className='form-control' type='text' placeholder='Nama' value={registration.name} onChange={(e) => onChangeData(e, 'name')} />
             </div>
             <div className='form-group'>
               <label className='control-label'>Alamat Lengkap</label>
-              <textarea type='text' className='form-control' placeholder='Alamat' value={address} onChange={(e) => onChangeAddress(e)} />
+              <textarea value={registration.address} type='text' className='form-control' placeholder='Alamat' onChange={(e) => onChangeData(e, 'address')} />
             </div>
             <div className='form-group'>
               <label className='control-label'>No KTP</label>
-              <input className='form-control' type='text' placeholder='No. KTP' value={idKTP} onChange={(e) => onChangeKTP(e)} />
+              <input className='form-control' type='text' placeholder='No. KTP' value={registration.ktp} onChange={(e) => onChangeData(e, 'ktp')} />
             </div>
             <div className='form-group'>
               <label className='control-label'>Masa Berlaku KTP</label>
-              {/* <input className='form-control' type='date' placeholder='Masa berlaku KTP' /> */}
-              {lifetime === true ? <br /> : <input className='form-control' type='date' placeholder='Masa Berlaku KTP' value={expiry} onChange={(e) => onChangeExpiry(e)} />}
-              <input type='checkbox' checked={lifetime} onClick={() => toggleLifeTime()} /> Berlaku seumur hidup
+              {registration.lifetime === true ? <br /> : <input className='form-control' type='date' placeholder='Masa berlaku KTP' value={registration.expiry} onChange={(e) => onChangeData(e, 'expiry')} />}
+              <input type='checkbox' checked={registration.lifetime} onChange={(e) => onChangeData(e, 'lifetime')} /> Berlaku seumur hidup
             </div>
-            ​
             <div className='form-group'>
-              <button className='btn btn-primary' onClick={() => onSubmitCivilian()}>
+              <button onClick={() => onSubmitCivilian()} className='btn btn-primary'>
                 Daftar
               </button>
             </div>
-            {/* {JSON.stringify(civilian)} */}
+            <br />
           </div>
-          ​
           <br />
           <br />
           <RegistrationList civilian={civilian} />

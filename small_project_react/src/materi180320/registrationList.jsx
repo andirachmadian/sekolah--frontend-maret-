@@ -19,7 +19,7 @@ export default function RegistrationList(props) {
               return (
                 <tr>
                   <td>{index + 1}</td>
-                  <td>{c.nama}</td>
+                  <td>{c.name}</td>
                   <td>{c.address}</td>
                   <td>{c.ktp}</td>
                   <td>{c.lifetime === true ? 'Berlaku seumur hidup' : c.expiry}</td>
