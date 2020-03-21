@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function RegistrationList() {
+export default function RegistrationList(props) {
   return (
     <div>
       <table className='table table-stripped'>
@@ -13,6 +13,20 @@ export default function RegistrationList() {
             <th>Masa Berlaku</th>
           </tr>
         </thead>
+        <tbody>
+          {props.civilian &&
+            props.civilian.map((c, index) => {
+              return (
+                <tr>
+                  <td>{index + 1}</td>
+                  <td>{c.nama}</td>
+                  <td>{c.address}</td>
+                  <td>{c.ktp}</td>
+                  <td>{c.lifetime === true ? 'Berlaku seumur hidup' : c.expiry}</td>
+                </tr>
+              );
+            })}
+        </tbody>
       </table>
     </div>
   );

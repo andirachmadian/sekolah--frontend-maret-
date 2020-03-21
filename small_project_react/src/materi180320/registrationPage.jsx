@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import RegistrationList from './registrationList';
 
-const contohData = {
-  nama: '',
-  addres: '',
-  ktp: '',
-  expired: '',
-  lifetime: false
-};
+// const contohData = {
+//   nama: '',
+//   addres: '',
+//   ktp: '',
+//   expired: '',
+//   lifetime: false
+// };
 
 export default function RegistrationPage() {
   const [angka, setAngka] = useState(0);
@@ -89,7 +89,7 @@ export default function RegistrationPage() {
                 Daftar
               </button>
             </div>
-            {JSON.stringify(civilian)}
+            {/* {JSON.stringify(civilian)} */}
           </div>
           ​
           <br />
