@@ -1,7 +1,11 @@
 import React from 'react';
 import { Container, Row, Table, ButtonGroup, Button } from 'reactstrap';
 
-export default function Cart({ cart }) {
+export default function Cart({ cart, onDeleteCart }) {
+  const deleteCart = (cartId) => {
+    onDeleteCart(cartId);
+  };
+
   return (
     <Container>
       <Row>
@@ -29,7 +33,9 @@ export default function Cart({ cart }) {
                     <td>{val.subTotal}</td>
                     <td>
                       <ButtonGroup>
-                        <Button color='danger'>x</Button>
+                        <Button onClick={() => deleteCart(val.cartId)} color='danger'>
+                          x
+                        </Button>
                       </ButtonGroup>
                     </td>
                   </tr>

@@ -62,21 +62,21 @@ export default function Main() {
       };
       setCart([...cart, dataCart]);
     }
-
-    const onDeleteCart = (cartId) => {
-      const findCart = cart.find((val) => val.cartId === cartId);
-      const findProduct = products.find((val) => val.id === findCart.product.id);
-      findProduct.stock = findProduct.stock + findCart.qty;
-      const filteredCart = cart.filter((val) => val.cartId !== cartId);
-      setProducts([...products]);
-      setCart([...filteredCart]);
-    };
   };
+  const onDeleteCart = (cartId) => {
+    const findCart = cart.find((val) => val.cartId === cartId);
+    const findProduct = products.find((val) => val.id === findCart.product.id);
+    findProduct.stock = findProduct.stock + findCart.qty;
+    const filteredCart = cart.filter((val) => val.cartId !== cartId);
+    setProducts([...products]);
+    setCart([...filteredCart]);
+  };
+
   return (
     <Container>
       <Row>
         <Products products={products} onAddCart={onAddCart} />
-        <Cart cart={cart} />
+        <Cart cart={cart} onDeleteCart={onDeleteCart} />
       </Row>
     </Container>
   );
